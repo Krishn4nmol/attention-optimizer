@@ -178,6 +178,7 @@ if st.session_state.running:
     blink_cooldown = 0
     prev_attention = 1.0
     low_streak     = 0
+    no_face_frames = 0      # ← NEW: track frames with no face
 
     action_names  = [
         "Continue", "Pause Video", "Slow Down",
@@ -200,10 +201,11 @@ if st.session_state.running:
         rgb     = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = face_mesh.process(rgb)
 
-        attention_score = prev_attention
         step = st.session_state.step
 
         if results.multi_face_landmarks:
+            # ── Face detected ──────────────────────────────────
+            no_face_frames = 0      # reset no-face counter
             lms = results.multi_face_landmarks[0].landmark
             attention_score, avg_ear = compute_attention(lms, w, h)
 
@@ -214,50 +216,67 @@ if st.session_state.running:
             if blink_cooldown > 0:
                 blink_cooldown -= 1
 
-            # Low streak tracking
-            if attention_score < 0.45:
-                low_streak += 1
-            else:
-                low_streak = max(0, low_streak - 1)
-
-            # Build observation for PPO
-            trend = float(np.clip(
-                (attention_score - prev_attention) * 5, -1, 1
-            ))
-            obs = np.array([
-                attention_score,
-                trend,
-                min(step / 50.0,  1.0),
-                min(low_streak / 10.0, 1.0),
-                min(step / 300.0, 1.0),
-                0.5
-            ], dtype=np.float32)
-
-            # PPO decision
-            if model:
-                action, _   = model.predict(obs, deterministic=True)
-                action_name = action_names[int(action)]
-            else:
-                if attention_score >= 0.65:
-                    action_name = "Continue"
-                elif attention_score >= 0.45:
-                    action_name = "Slow Down"
-                elif attention_score >= 0.30:
-                    action_name = "Pause Video"
-                else:
-                    action_name = "Add Break"
-
-            st.session_state.current_action = action_name
-            st.session_state.action_counts[action_name] += 1
-
             # Draw on frame
             color = (0, 255, 0)   if attention_score > 0.65 else \
                     (0, 165, 255) if attention_score > 0.40 else \
                     (0, 0, 255)
             cv2.putText(frame, f"Attention: {attention_score:.2f}",
                         (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, 2)
-            cv2.putText(frame, action_name,
-                        (20, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+
+        else:
+            # ── No face detected — drop score gradually ────────
+            no_face_frames += 1
+            drop = min(0.05 * no_face_frames, 0.15)  # max 0.15 drop per frame
+            attention_score = max(0.0, prev_attention - drop)
+
+            # Show warning on frame
+            cv2.putText(frame, "No face detected",
+                        (20, 50), cv2.FONT_HERSHEY_SIMPLEX,
+                        1.0, (0, 0, 255), 2)
+            cv2.putText(frame, f"Attention: {attention_score:.2f}",
+                        (20, 90), cv2.FONT_HERSHEY_SIMPLEX,
+                        1.0, (0, 0, 255), 2)
+
+        # Low streak tracking
+        if attention_score < 0.45:
+            low_streak += 1
+        else:
+            low_streak = max(0, low_streak - 1)
+
+        # Build observation for PPO
+        trend = float(np.clip(
+            (attention_score - prev_attention) * 5, -1, 1
+        ))
+        obs = np.array([
+            attention_score,
+            trend,
+            min(step / 50.0,  1.0),
+            min(low_streak / 10.0, 1.0),
+            min(step / 300.0, 1.0),
+            0.5
+        ], dtype=np.float32)
+
+        # PPO decision
+        if model:
+            action, _   = model.predict(obs, deterministic=True)
+            action_name = action_names[int(action)]
+        else:
+            if attention_score >= 0.65:
+                action_name = "Continue"
+            elif attention_score >= 0.45:
+                action_name = "Slow Down"
+            elif attention_score >= 0.30:
+                action_name = "Pause Video"
+            else:
+                action_name = "Add Break"
+
+        st.session_state.current_action = action_name
+        st.session_state.action_counts[action_name] += 1
+
+        # Draw action on frame
+        cv2.putText(frame, action_name,
+                    (20, 130), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8, (255, 255, 255), 2)
 
         # Update history
         elapsed = time.time() - st.session_state.session_start
