@@ -5,7 +5,6 @@ import numpy as np
 import time
 import vlc
 import os
-import tempfile
 from collections import deque
 from stable_baselines3 import PPO
 import plotly.graph_objects as go
@@ -134,8 +133,6 @@ st.markdown("*VLC plays your video — AI controls pause, speed and rewind autom
 st.divider()
 
 st.subheader("📁 Step 1: Select Your Lecture Video")
-st.markdown("Enter the full path to your video file:")
-
 video_path_input = st.text_input(
     "Video path",
     value=r"C:\Users\KIIT\OneDrive\Documents\attention-optimizer\lecture.mp4",
@@ -164,37 +161,36 @@ with col_status:
 
 st.divider()
 
-# Layout
 col_left, col_right = st.columns([1, 1])
 
 with col_left:
-    st.subheader("📷 Webcam — AI is watching")
-    webcam_placeholder = st.empty()
+    st.subheader("📷 Webcam — AI Watching")
+    webcam_placeholder    = st.empty()
     st.subheader("🎬 VLC Status")
     vlc_status_placeholder = st.empty()
     st.subheader("👁️ Attention Score")
-    score_placeholder = st.empty()
+    score_placeholder     = st.empty()
 
 with col_right:
     st.subheader("📊 Session Stats")
-    stats_placeholder = st.empty()
+    stats_placeholder        = st.empty()
     st.subheader("📈 Attention Graph")
-    chart_placeholder = st.empty()
+    chart_placeholder        = st.empty()
     st.subheader("🎯 Action Distribution")
     action_chart_placeholder = st.empty()
 
 # ── Start/Stop ─────────────────────────────────────────────────
 if start_btn:
-    st.session_state.running       = True
-    st.session_state.session_start = time.time()
+    st.session_state.running        = True
+    st.session_state.session_start  = time.time()
     st.session_state.attention_history.clear()
     st.session_state.time_history.clear()
-    st.session_state.blink_count   = 0
-    st.session_state.step          = 0
-    st.session_state.pause_count   = 0
-    st.session_state.break_count   = 0
+    st.session_state.blink_count    = 0
+    st.session_state.step           = 0
+    st.session_state.pause_count    = 0
+    st.session_state.break_count    = 0
     st.session_state.current_action = "Not Started"
-    st.session_state.action_counts = {
+    st.session_state.action_counts  = {
         "Continue": 0, "Pause Video": 0,
         "Slow Down": 0, "Simplify Content": 0, "Add Break": 0
     }
@@ -213,7 +209,7 @@ if st.session_state.running and st.session_state.video_path:
     player       = vlc_instance.media_player_new()
     player.set_media(media)
     player.play()
-    time.sleep(1.5)  # let VLC start
+    time.sleep(1.5)
 
     EAR_THRESHOLD  = 0.22
     blink_cooldown = 0
@@ -232,7 +228,6 @@ if st.session_state.running and st.session_state.video_path:
     while st.session_state.running:
         step = st.session_state.step
 
-        # Webcam
         ret, cam_frame = cam_cap.read()
         if not ret:
             break
@@ -287,7 +282,7 @@ if st.session_state.running and st.session_state.video_path:
             elif attention_score >= 0.30: action_name = "Pause Video"
             else:                         action_name = "Add Break"
 
-        # ── VLC Control ────────────────────────────────────────
+        # ── VLC Control (only on action change) ───────────────
         if action_name != last_action:
             if action_name == "Continue":
                 player.set_rate(1.0)
@@ -299,10 +294,8 @@ if st.session_state.running and st.session_state.video_path:
 
             elif action_name == "Pause Video":
                 player.pause()
-                st.session_state.pause_count += 1
 
             elif action_name == "Simplify Content":
-                # Rewind 15 seconds and slow down
                 current_ms = player.get_time()
                 player.set_time(max(0, current_ms - 15000))
                 player.set_rate(0.5)
@@ -310,17 +303,24 @@ if st.session_state.running and st.session_state.video_path:
 
             elif action_name == "Add Break":
                 player.pause()
-                st.session_state.break_count += 1
 
             last_action = action_name
 
         # Resume if refocused
-        if action_name == "Continue" and player.get_state() == vlc.State.Paused:
+        if action_name == "Continue" and \
+           player.get_state() == vlc.State.Paused:
             player.play()
             player.set_rate(1.0)
 
+        # ── Update counts ──────────────────────────────────────
         st.session_state.current_action = action_name
         st.session_state.action_counts[action_name] += 1
+
+        # Sync pause and break counts from action_counts
+        st.session_state.pause_count = \
+            st.session_state.action_counts["Pause Video"] // 10
+        st.session_state.break_count = \
+            st.session_state.action_counts["Add Break"] // 10
 
         elapsed = time.time() - st.session_state.session_start
         st.session_state.attention_history.append(attention_score)
@@ -329,20 +329,16 @@ if st.session_state.running and st.session_state.video_path:
         st.session_state.step += 1
 
         # ── Update UI ─────────────────────────────────────────
-
-        # Webcam
         webcam_placeholder.image(
             cv2.cvtColor(cam_frame, cv2.COLOR_BGR2RGB),
             channels="RGB", width=400
         )
 
-        # VLC status
         vlc_status_placeholder.markdown(
             get_status_html(action_name, attention_score),
             unsafe_allow_html=True
         )
 
-        # Score
         score_pct = int(attention_score * 100)
         css_class = "attention-high" if attention_score > 0.65 else \
                     "attention-mid"  if attention_score > 0.40 else \
@@ -355,13 +351,13 @@ if st.session_state.running and st.session_state.video_path:
             unsafe_allow_html=True
         )
 
-        # Stats
         mins = int(elapsed) // 60
         secs = int(elapsed) % 60
         vlc_state = str(player.get_state()).replace("State.", "")
         vid_time  = player.get_time() // 1000
         vm = vid_time // 60
         vs = vid_time % 60
+
         stats_placeholder.markdown(
             f'<div class="metric-card">'
             f'<div style="color:#aaa;font-size:12px">SESSION TIME</div>'
@@ -388,7 +384,6 @@ if st.session_state.running and st.session_state.video_path:
             unsafe_allow_html=True
         )
 
-        # Attention chart
         if len(st.session_state.attention_history) > 1:
             times  = list(st.session_state.time_history)
             scores = list(st.session_state.attention_history)
@@ -416,7 +411,6 @@ if st.session_state.running and st.session_state.video_path:
                 key=f"chart_{step}"
             )
 
-        # Action distribution
         ac   = st.session_state.action_counts
         fig2 = go.Figure(go.Bar(
             x=list(ac.keys()),
@@ -439,7 +433,6 @@ if st.session_state.running and st.session_state.video_path:
 
         time.sleep(0.1)
 
-    # Cleanup
     player.stop()
     cam_cap.release()
     status_placeholder.warning("⏹ Session ended")
