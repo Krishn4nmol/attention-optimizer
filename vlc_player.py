@@ -3,22 +3,19 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
-import base64
-import tempfile
+import vlc
 import os
+import tempfile
 from collections import deque
 from stable_baselines3 import PPO
-from attention_env import AttentionEnv
 import plotly.graph_objects as go
 
-# ── Page Config ────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Attention Video Player",
+    page_title="Attention VLC Player",
     page_icon="🎬",
     layout="wide"
 )
 
-# ── Custom CSS ─────────────────────────────────────────────────
 st.markdown("""
 <style>
     .main { background-color: #0e1117; }
@@ -32,20 +29,11 @@ st.markdown("""
     .attention-high { color: #00ff88; font-size: 42px; font-weight: bold; }
     .attention-mid  { color: #ffaa00; font-size: 42px; font-weight: bold; }
     .attention-low  { color: #ff4444; font-size: 42px; font-weight: bold; }
-    .action-box {
-        background: #1e2130;
+    .status-box {
         border-radius: 12px;
         padding: 15px;
         text-align: center;
         font-size: 22px;
-        border: 2px solid #3e4470;
-        margin-top: 10px;
-    }
-    .status-box {
-        border-radius: 12px;
-        padding: 12px;
-        text-align: center;
-        font-size: 20px;
         font-weight: bold;
         margin-top: 10px;
     }
@@ -56,14 +44,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── MediaPipe Setup ────────────────────────────────────────────
+# ── MediaPipe ──────────────────────────────────────────────────
 mp_face_mesh = mp.solutions.face_mesh
 face_mesh    = mp_face_mesh.FaceMesh(
     refine_landmarks=True,
     min_detection_confidence=0.5,
     min_tracking_confidence=0.5
 )
-
 LEFT_EYE   = [362, 385, 387, 263, 373, 380]
 RIGHT_EYE  = [33,  160, 158, 133, 153, 144]
 LEFT_IRIS  = [474, 475, 476, 477]
@@ -72,17 +59,15 @@ RIGHT_IRIS = [469, 470, 471, 472]
 # ── Session State ──────────────────────────────────────────────
 defaults = {
     "running":           False,
-    "video_paused":      False,
     "attention_history": deque(maxlen=150),
     "time_history":      deque(maxlen=150),
-    "current_score":     0.0,
-    "current_action":    "Not Started",
     "blink_count":       0,
     "session_start":     None,
     "step":              0,
     "pause_count":       0,
     "break_count":       0,
     "video_path":        None,
+    "current_action":    "Not Started",
     "action_counts": {
         "Continue": 0, "Pause Video": 0,
         "Slow Down": 0, "Simplify Content": 0, "Add Break": 0
@@ -92,7 +77,7 @@ for k, v in defaults.items():
     if k not in st.session_state:
         st.session_state[k] = v
 
-# ── Helper Functions ───────────────────────────────────────────
+# ── Helpers ────────────────────────────────────────────────────
 def eye_aspect_ratio(landmarks, eye_indices, w, h):
     pts = [(int(landmarks[i].x * w), int(landmarks[i].y * h))
            for i in eye_indices]
@@ -130,40 +115,41 @@ def load_model():
     except:
         return None
 
-def get_status_html(action_name):
+def get_status_html(action_name, score):
+    pct = int(score * 100)
     mapping = {
-        "Continue":         ("status-playing",  "▶️ Playing"),
-        "Slow Down":        ("status-slowdown", "🐢 Slowing Down"),
-        "Pause Video":      ("status-paused",   "⏸️ Paused"),
-        "Simplify Content": ("status-slowdown", "📖 Simplifying"),
-        "Add Break":        ("status-break",    "☕ Break Time"),
+        "Continue":         ("status-playing",  f"▶️ Playing — {pct}%"),
+        "Slow Down":        ("status-slowdown", f"🐢 Slow Mode — {pct}%"),
+        "Pause Video":      ("status-paused",   f"⏸️ Auto Paused — {pct}%"),
+        "Simplify Content": ("status-slowdown", f"📖 Rewinding — {pct}%"),
+        "Add Break":        ("status-break",    f"☕ Break Time — {pct}%"),
+        "Not Started":      ("status-playing",  "⬆️ Press Start"),
     }
-    css, label = mapping.get(action_name, ("status-playing", "▶️ Playing"))
+    css, label = mapping.get(action_name, ("status-playing", action_name))
     return f'<div class="status-box {css}">{label}</div>'
 
-# ── UI Layout ──────────────────────────────────────────────────
-st.title("🎬 Attention-Adaptive Video Player")
-st.markdown("*Video automatically pauses when you lose focus*")
+# ── UI ─────────────────────────────────────────────────────────
+st.title("🎬 Attention-Adaptive VLC Player")
+st.markdown("*VLC plays your video — AI controls pause, speed and rewind automatically*")
 st.divider()
 
-# Video upload
-st.subheader("📁 Upload a Lecture Video")
-uploaded_file = st.file_uploader(
-    "Upload MP4 video",
-    type=["mp4", "avi", "mov"],
-    help="Upload any lecture video. It will pause automatically when you lose focus."
+st.subheader("📁 Step 1: Select Your Lecture Video")
+st.markdown("Enter the full path to your video file:")
+
+video_path_input = st.text_input(
+    "Video path",
+    value=r"C:\Users\KIIT\OneDrive\Documents\attention-optimizer\lecture.mp4",
+    placeholder=r"C:\path\to\your\video.mp4"
 )
 
-if uploaded_file:
-    # Save to temp file
-    tfile = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
-    tfile.write(uploaded_file.read())
-    st.session_state.video_path = tfile.name
-    st.success(f"✅ Video loaded: {uploaded_file.name}")
+if video_path_input and os.path.exists(video_path_input):
+    st.session_state.video_path = video_path_input
+    st.success(f"✅ Found: {os.path.basename(video_path_input)}")
+elif video_path_input:
+    st.error("❌ File not found — check the path")
 
 st.divider()
 
-# Controls
 col_start, col_stop, col_status = st.columns([1, 1, 2])
 with col_start:
     start_btn = st.button(
@@ -178,39 +164,37 @@ with col_status:
 
 st.divider()
 
-# Main layout — 3 columns
-col_video, col_cam, col_stats = st.columns([2, 1, 1])
+# Layout
+col_left, col_right = st.columns([1, 1])
 
-with col_video:
-    st.subheader("🎬 Lecture Video")
-    video_placeholder  = st.empty()
-    vstatus_placeholder = st.empty()
-
-with col_cam:
-    st.subheader("📷 Webcam")
+with col_left:
+    st.subheader("📷 Webcam — AI is watching")
     webcam_placeholder = st.empty()
-    st.subheader("👁️ Attention")
-    score_placeholder  = st.empty()
-    action_placeholder = st.empty()
+    st.subheader("🎬 VLC Status")
+    vlc_status_placeholder = st.empty()
+    st.subheader("👁️ Attention Score")
+    score_placeholder = st.empty()
 
-with col_stats:
+with col_right:
     st.subheader("📊 Session Stats")
     stats_placeholder = st.empty()
     st.subheader("📈 Attention Graph")
     chart_placeholder = st.empty()
+    st.subheader("🎯 Action Distribution")
+    action_chart_placeholder = st.empty()
 
-# ── Session start/stop ─────────────────────────────────────────
+# ── Start/Stop ─────────────────────────────────────────────────
 if start_btn:
-    st.session_state.running        = True
-    st.session_state.session_start  = time.time()
-    st.session_state.video_paused   = False
+    st.session_state.running       = True
+    st.session_state.session_start = time.time()
     st.session_state.attention_history.clear()
     st.session_state.time_history.clear()
-    st.session_state.blink_count    = 0
-    st.session_state.step           = 0
-    st.session_state.pause_count    = 0
-    st.session_state.break_count    = 0
-    st.session_state.action_counts  = {
+    st.session_state.blink_count   = 0
+    st.session_state.step          = 0
+    st.session_state.pause_count   = 0
+    st.session_state.break_count   = 0
+    st.session_state.current_action = "Not Started"
+    st.session_state.action_counts = {
         "Continue": 0, "Pause Video": 0,
         "Slow Down": 0, "Simplify Content": 0, "Add Break": 0
     }
@@ -220,35 +204,37 @@ if stop_btn:
 
 # ── Main Loop ──────────────────────────────────────────────────
 if st.session_state.running and st.session_state.video_path:
-    model = load_model()
-
-    # Open video
-    vid_cap = cv2.VideoCapture(st.session_state.video_path)
+    model   = load_model()
     cam_cap = cv2.VideoCapture(0)
 
-    fps          = vid_cap.get(cv2.CAP_PROP_FPS) or 25
-    total_frames = int(vid_cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    # Start VLC
+    vlc_instance = vlc.Instance("--no-xlib")
+    media        = vlc_instance.media_new(st.session_state.video_path)
+    player       = vlc_instance.media_player_new()
+    player.set_media(media)
+    player.play()
+    time.sleep(1.5)  # let VLC start
 
     EAR_THRESHOLD  = 0.22
     blink_cooldown = 0
     prev_attention = 1.0
     low_streak     = 0
     no_face_frames = 0
-    video_frame_idx = 0
+    last_action    = "Continue"
 
     action_names = [
         "Continue", "Pause Video", "Slow Down",
         "Simplify Content", "Add Break"
     ]
 
-    status_placeholder.success("🟢 Session Running!")
+    status_placeholder.success("🟢 VLC playing — AI monitoring attention!")
 
     while st.session_state.running:
         step = st.session_state.step
 
-        # ── Webcam frame ───────────────────────────────────────
-        ret_cam, cam_frame = cam_cap.read()
-        if not ret_cam:
+        # Webcam
+        ret, cam_frame = cam_cap.read()
+        if not ret:
             break
 
         h, w    = cam_frame.shape[:2]
@@ -259,107 +245,83 @@ if st.session_state.running and st.session_state.video_path:
             no_face_frames = 0
             lms = results.multi_face_landmarks[0].landmark
             attention_score, avg_ear = compute_attention(lms, w, h)
-
             if avg_ear < EAR_THRESHOLD and blink_cooldown == 0:
                 st.session_state.blink_count += 1
                 blink_cooldown = 10
             if blink_cooldown > 0:
                 blink_cooldown -= 1
-
-            color = (0, 255, 0)   if attention_score > 0.65 else \
-                    (0, 165, 255) if attention_score > 0.40 else \
-                    (0, 0, 255)
+            color = (0,255,0) if attention_score>0.65 else \
+                    (0,165,255) if attention_score>0.40 else (0,0,255)
             cv2.putText(cam_frame, f"{int(attention_score*100)}%",
-                        (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.5, color, 3)
+                        (20,50), cv2.FONT_HERSHEY_SIMPLEX, 1.5, color, 3)
+            cv2.putText(cam_frame, last_action,
+                        (20,95), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
         else:
             no_face_frames += 1
             drop = min(0.05 * no_face_frames, 0.15)
             attention_score = max(0.0, prev_attention - drop)
             cv2.putText(cam_frame, "No face",
-                        (20, 50), cv2.FONT_HERSHEY_SIMPLEX,
-                        1.0, (0, 0, 255), 2)
+                        (20,50), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,0,255), 2)
             cv2.putText(cam_frame, f"{int(attention_score*100)}%",
-                        (20, 90), cv2.FONT_HERSHEY_SIMPLEX,
-                        1.2, (0, 0, 255), 2)
+                        (20,90), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0,0,255), 2)
 
         if attention_score < 0.45:
             low_streak += 1
         else:
             low_streak = max(0, low_streak - 1)
 
-        # PPO decision
-        trend = float(np.clip(
-            (attention_score - prev_attention) * 5, -1, 1
-        ))
+        trend = float(np.clip((attention_score - prev_attention)*5, -1, 1))
         obs = np.array([
             attention_score, trend,
-            min(step / 50.0, 1.0),
-            min(low_streak / 10.0, 1.0),
-            min(step / 300.0, 1.0),
-            0.5
+            min(step/50.0, 1.0),
+            min(low_streak/10.0, 1.0),
+            min(step/300.0, 1.0), 0.5
         ], dtype=np.float32)
 
         if model:
             action, _   = model.predict(obs, deterministic=True)
             action_name = action_names[int(action)]
         else:
-            if attention_score >= 0.65:
-                action_name = "Continue"
-            elif attention_score >= 0.45:
-                action_name = "Slow Down"
-            elif attention_score >= 0.30:
-                action_name = "Pause Video"
-            else:
-                action_name = "Add Break"
+            if attention_score >= 0.65:   action_name = "Continue"
+            elif attention_score >= 0.45: action_name = "Slow Down"
+            elif attention_score >= 0.30: action_name = "Pause Video"
+            else:                         action_name = "Add Break"
+
+        # ── VLC Control ────────────────────────────────────────
+        if action_name != last_action:
+            if action_name == "Continue":
+                player.set_rate(1.0)
+                player.play()
+
+            elif action_name == "Slow Down":
+                player.set_rate(0.6)
+                player.play()
+
+            elif action_name == "Pause Video":
+                player.pause()
+                st.session_state.pause_count += 1
+
+            elif action_name == "Simplify Content":
+                # Rewind 15 seconds and slow down
+                current_ms = player.get_time()
+                player.set_time(max(0, current_ms - 15000))
+                player.set_rate(0.5)
+                player.play()
+
+            elif action_name == "Add Break":
+                player.pause()
+                st.session_state.break_count += 1
+
+            last_action = action_name
+
+        # Resume if refocused
+        if action_name == "Continue" and player.get_state() == vlc.State.Paused:
+            player.play()
+            player.set_rate(1.0)
 
         st.session_state.current_action = action_name
         st.session_state.action_counts[action_name] += 1
 
-        # ── Video pause/resume logic ───────────────────────────
-        should_pause = action_name in ["Pause Video", "Add Break"]
-
-        if should_pause and not st.session_state.video_paused:
-            st.session_state.video_paused = True
-            if action_name == "Pause Video":
-                st.session_state.pause_count += 1
-            else:
-                st.session_state.break_count += 1
-
-        elif not should_pause and st.session_state.video_paused:
-            st.session_state.video_paused = False
-
-        # ── Read video frame ───────────────────────────────────
-        if not st.session_state.video_paused:
-            ret_vid, vid_frame = vid_cap.read()
-            if not ret_vid:
-                vid_cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-                ret_vid, vid_frame = vid_cap.read()
-            video_frame_idx += 1
-        else:
-            # Hold current frame when paused
-            current_pos = vid_cap.get(cv2.CAP_PROP_POS_FRAMES)
-            vid_cap.set(cv2.CAP_PROP_POS_FRAMES,
-                        max(0, current_pos - 1))
-            ret_vid, vid_frame = vid_cap.read()
-
-        # Overlay pause indicator on video
-        if st.session_state.video_paused and ret_vid:
-            overlay = vid_frame.copy()
-            cv2.rectangle(overlay, (0, 0),
-                          (vid_frame.shape[1], vid_frame.shape[0]),
-                          (0, 0, 0), -1)
-            cv2.addWeighted(overlay, 0.4, vid_frame, 0.6, 0, vid_frame)
-            cv2.putText(vid_frame, "PAUSED - Refocus to continue",
-                        (30, vid_frame.shape[0]//2),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.0,
-                        (255, 255, 255), 2)
-            cv2.putText(vid_frame,
-                        f"Attention: {int(attention_score*100)}%",
-                        (30, vid_frame.shape[0]//2 + 50),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                        (0, 0, 255), 2)
-
-        # Update history
         elapsed = time.time() - st.session_state.session_start
         st.session_state.attention_history.append(attention_score)
         st.session_state.time_history.append(round(elapsed, 1))
@@ -367,25 +329,17 @@ if st.session_state.running and st.session_state.video_path:
         st.session_state.step += 1
 
         # ── Update UI ─────────────────────────────────────────
-        # Video
-        if ret_vid:
-            video_placeholder.image(
-                cv2.cvtColor(vid_frame, cv2.COLOR_BGR2RGB),
-                channels="RGB",
-                width=600
-            )
-
-        # Video status
-        vstatus_placeholder.markdown(
-            get_status_html(action_name),
-            unsafe_allow_html=True
-        )
 
         # Webcam
         webcam_placeholder.image(
             cv2.cvtColor(cam_frame, cv2.COLOR_BGR2RGB),
-            channels="RGB",
-            width=300
+            channels="RGB", width=400
+        )
+
+        # VLC status
+        vlc_status_placeholder.markdown(
+            get_status_html(action_name, attention_score),
+            unsafe_allow_html=True
         )
 
         # Score
@@ -395,39 +349,41 @@ if st.session_state.running and st.session_state.video_path:
                     "attention-low"
         score_placeholder.markdown(
             f'<div class="metric-card">'
-            f'<div style="color:#aaa;font-size:12px">ATTENTION</div>'
+            f'<div style="color:#aaa;font-size:12px">LIVE SCORE</div>'
             f'<div class="{css_class}">{score_pct}%</div>'
             f'</div>',
             unsafe_allow_html=True
         )
 
-        # Action
-        action_placeholder.markdown(
-            get_status_html(action_name),
-            unsafe_allow_html=True
-        )
-
-        # Session stats
-        session_time = int(elapsed)
-        mins = session_time // 60
-        secs = session_time % 60
-        progress = video_frame_idx / max(total_frames, 1)
+        # Stats
+        mins = int(elapsed) // 60
+        secs = int(elapsed) % 60
+        vlc_state = str(player.get_state()).replace("State.", "")
+        vid_time  = player.get_time() // 1000
+        vm = vid_time // 60
+        vs = vid_time % 60
         stats_placeholder.markdown(
             f'<div class="metric-card">'
             f'<div style="color:#aaa;font-size:12px">SESSION TIME</div>'
-            f'<div style="color:white;font-size:24px">{mins:02d}:{secs:02d}</div>'
+            f'<div style="color:white;font-size:22px">{mins:02d}:{secs:02d}</div>'
             f'<br>'
-            f'<div style="color:#aaa;font-size:12px">VIDEO PROGRESS</div>'
-            f'<div style="color:white;font-size:20px">{progress*100:.1f}%</div>'
+            f'<div style="color:#aaa;font-size:12px">VIDEO TIME</div>'
+            f'<div style="color:white;font-size:22px">{vm:02d}:{vs:02d}</div>'
+            f'<br>'
+            f'<div style="color:#aaa;font-size:12px">VLC STATE</div>'
+            f'<div style="color:#00ff88;font-size:18px">{vlc_state}</div>'
             f'<br>'
             f'<div style="color:#aaa;font-size:12px">AUTO PAUSES</div>'
-            f'<div style="color:#ff4444;font-size:20px">{st.session_state.pause_count}</div>'
+            f'<div style="color:#ff4444;font-size:22px">'
+            f'{st.session_state.pause_count}</div>'
             f'<br>'
-            f'<div style="color:#aaa;font-size:12px">BREAKS TAKEN</div>'
-            f'<div style="color:#4488ff;font-size:20px">{st.session_state.break_count}</div>'
+            f'<div style="color:#aaa;font-size:12px">BREAKS</div>'
+            f'<div style="color:#4488ff;font-size:22px">'
+            f'{st.session_state.break_count}</div>'
             f'<br>'
             f'<div style="color:#aaa;font-size:12px">BLINKS</div>'
-            f'<div style="color:white;font-size:20px">{st.session_state.blink_count}</div>'
+            f'<div style="color:white;font-size:22px">'
+            f'{st.session_state.blink_count}</div>'
             f'</div>',
             unsafe_allow_html=True
         )
@@ -438,37 +394,55 @@ if st.session_state.running and st.session_state.video_path:
             scores = list(st.session_state.attention_history)
             fig = go.Figure()
             fig.add_trace(go.Scatter(
-                x=times, y=scores,
-                mode="lines",
+                x=times, y=scores, mode="lines",
                 line=dict(color="#00ff88", width=2),
                 fill="tozeroy",
                 fillcolor="rgba(0,255,136,0.1)"
             ))
-            fig.add_hline(y=0.65, line_dash="dash",
-                          line_color="#ffaa00")
-            fig.add_hline(y=0.40, line_dash="dash",
-                          line_color="#ff4444")
+            fig.add_hline(y=0.65, line_dash="dash", line_color="#ffaa00")
+            fig.add_hline(y=0.40, line_dash="dash", line_color="#ff4444")
             fig.update_layout(
                 height=200,
                 margin=dict(l=0, r=0, t=5, b=0),
                 paper_bgcolor="#0e1117",
                 plot_bgcolor="#0e1117",
                 font=dict(color="white"),
-                yaxis=dict(range=[0, 1], gridcolor="#2e3250"),
+                yaxis=dict(range=[0,1], gridcolor="#2e3250"),
                 xaxis=dict(gridcolor="#2e3250"),
                 showlegend=False
             )
             chart_placeholder.plotly_chart(
-                fig,
-                use_container_width=True,
+                fig, use_container_width=True,
                 key=f"chart_{step}"
             )
 
-        time.sleep(0.04)  # ~25fps
+        # Action distribution
+        ac   = st.session_state.action_counts
+        fig2 = go.Figure(go.Bar(
+            x=list(ac.keys()),
+            y=list(ac.values()),
+            marker_color=["#00ff88","#ff4444","#ffaa00","#4488ff","#ff88aa"]
+        ))
+        fig2.update_layout(
+            height=200,
+            margin=dict(l=0, r=0, t=5, b=0),
+            paper_bgcolor="#0e1117",
+            plot_bgcolor="#0e1117",
+            font=dict(color="white"),
+            yaxis=dict(gridcolor="#2e3250"),
+            xaxis=dict(gridcolor="#2e3250"),
+        )
+        action_chart_placeholder.plotly_chart(
+            fig2, use_container_width=True,
+            key=f"action_chart_{step}"
+        )
 
-    vid_cap.release()
+        time.sleep(0.1)
+
+    # Cleanup
+    player.stop()
     cam_cap.release()
     status_placeholder.warning("⏹ Session ended")
 
 elif not st.session_state.running:
-    status_placeholder.info("⬆️ Upload a video and press Start")
+    status_placeholder.info("⬆️ Enter video path and press Start Session")
