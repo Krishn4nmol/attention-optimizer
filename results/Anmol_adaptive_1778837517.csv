@@ -1,0 +1,725 @@
+participant_id,mode,timestamp,attention_score,action,low_streak
+Anmol,adaptive,0.39,0.83,Continue,0
+Anmol,adaptive,0.93,0.86,Continue,0
+Anmol,adaptive,1.09,0.86,Continue,0
+Anmol,adaptive,1.24,0.86,Continue,0
+Anmol,adaptive,1.4,0.84,Continue,0
+Anmol,adaptive,1.55,0.85,Continue,0
+Anmol,adaptive,1.71,0.83,Continue,0
+Anmol,adaptive,1.87,0.75,Continue,0
+Anmol,adaptive,2.02,0.85,Continue,0
+Anmol,adaptive,2.17,0.76,Continue,0
+Anmol,adaptive,2.33,0.83,Continue,0
+Anmol,adaptive,2.49,0.86,Continue,0
+Anmol,adaptive,2.64,0.82,Continue,0
+Anmol,adaptive,2.8,0.81,Continue,0
+Anmol,adaptive,2.96,0.79,Continue,0
+Anmol,adaptive,3.11,0.79,Continue,0
+Anmol,adaptive,3.26,0.79,Continue,0
+Anmol,adaptive,3.42,0.84,Continue,0
+Anmol,adaptive,3.58,0.81,Continue,0
+Anmol,adaptive,3.73,0.81,Continue,0
+Anmol,adaptive,3.88,0.8,Continue,0
+Anmol,adaptive,4.04,0.85,Continue,0
+Anmol,adaptive,4.2,0.89,Continue,0
+Anmol,adaptive,4.35,0.91,Continue,0
+Anmol,adaptive,4.51,0.81,Continue,0
+Anmol,adaptive,4.69,0.81,Continue,0
+Anmol,adaptive,4.86,0.82,Continue,0
+Anmol,adaptive,5.02,0.82,Continue,0
+Anmol,adaptive,5.18,0.77,Continue,0
+Anmol,adaptive,5.33,0.82,Continue,0
+Anmol,adaptive,5.49,0.87,Continue,0
+Anmol,adaptive,5.67,0.86,Continue,0
+Anmol,adaptive,5.83,0.84,Continue,0
+Anmol,adaptive,5.99,0.86,Continue,0
+Anmol,adaptive,6.15,0.81,Continue,0
+Anmol,adaptive,6.31,0.81,Continue,0
+Anmol,adaptive,6.47,0.82,Continue,0
+Anmol,adaptive,6.62,0.83,Continue,0
+Anmol,adaptive,6.78,0.86,Continue,0
+Anmol,adaptive,6.94,0.79,Continue,0
+Anmol,adaptive,7.1,0.83,Continue,0
+Anmol,adaptive,7.27,0.83,Continue,0
+Anmol,adaptive,7.42,0.79,Continue,0
+Anmol,adaptive,7.57,0.77,Continue,0
+Anmol,adaptive,7.74,0.74,Continue,0
+Anmol,adaptive,7.89,0.83,Continue,0
+Anmol,adaptive,8.04,0.84,Continue,0
+Anmol,adaptive,8.2,0.82,Continue,0
+Anmol,adaptive,8.36,0.79,Continue,0
+Anmol,adaptive,8.51,0.8,Continue,0
+Anmol,adaptive,8.67,0.81,Continue,0
+Anmol,adaptive,8.84,0.76,Continue,0
+Anmol,adaptive,8.99,0.81,Continue,0
+Anmol,adaptive,9.15,0.81,Continue,0
+Anmol,adaptive,9.31,0.82,Continue,0
+Anmol,adaptive,9.46,0.81,Continue,0
+Anmol,adaptive,9.62,0.85,Continue,0
+Anmol,adaptive,9.8,0.83,Continue,0
+Anmol,adaptive,9.96,0.79,Continue,0
+Anmol,adaptive,10.11,0.82,Continue,0
+Anmol,adaptive,10.27,0.82,Continue,0
+Anmol,adaptive,10.42,0.84,Continue,0
+Anmol,adaptive,10.58,0.82,Continue,0
+Anmol,adaptive,10.74,0.85,Continue,0
+Anmol,adaptive,10.9,0.84,Continue,0
+Anmol,adaptive,11.05,0.78,Continue,0
+Anmol,adaptive,11.22,0.85,Continue,0
+Anmol,adaptive,11.39,0.85,Continue,0
+Anmol,adaptive,11.54,0.84,Continue,0
+Anmol,adaptive,11.7,0.83,Continue,0
+Anmol,adaptive,11.86,0.85,Continue,0
+Anmol,adaptive,12.03,0.78,Continue,0
+Anmol,adaptive,12.18,0.82,Continue,0
+Anmol,adaptive,12.33,0.85,Continue,0
+Anmol,adaptive,12.49,0.87,Continue,0
+Anmol,adaptive,12.65,0.82,Continue,0
+Anmol,adaptive,12.81,0.81,Continue,0
+Anmol,adaptive,12.97,0.85,Continue,0
+Anmol,adaptive,13.12,0.85,Continue,0
+Anmol,adaptive,13.27,0.8,Continue,0
+Anmol,adaptive,13.44,0.83,Continue,0
+Anmol,adaptive,13.61,0.85,Continue,0
+Anmol,adaptive,13.77,0.84,Continue,0
+Anmol,adaptive,13.93,0.83,Continue,0
+Anmol,adaptive,14.08,0.84,Continue,0
+Anmol,adaptive,14.24,0.84,Continue,0
+Anmol,adaptive,14.4,0.83,Continue,0
+Anmol,adaptive,14.55,0.86,Continue,0
+Anmol,adaptive,14.7,0.88,Continue,0
+Anmol,adaptive,14.87,0.83,Continue,0
+Anmol,adaptive,15.04,0.82,Continue,0
+Anmol,adaptive,15.19,0.87,Continue,0
+Anmol,adaptive,15.65,0.86,Continue,0
+Anmol,adaptive,15.82,0.83,Continue,0
+Anmol,adaptive,15.97,0.89,Continue,0
+Anmol,adaptive,16.13,0.86,Continue,0
+Anmol,adaptive,16.28,0.85,Continue,0
+Anmol,adaptive,16.44,0.8,Continue,0
+Anmol,adaptive,16.6,0.82,Continue,0
+Anmol,adaptive,16.75,0.91,Continue,0
+Anmol,adaptive,16.91,0.84,Continue,0
+Anmol,adaptive,17.06,0.88,Continue,0
+Anmol,adaptive,17.22,0.84,Continue,0
+Anmol,adaptive,17.37,0.85,Continue,0
+Anmol,adaptive,17.54,0.83,Continue,0
+Anmol,adaptive,17.68,0.81,Continue,0
+Anmol,adaptive,17.84,0.87,Continue,0
+Anmol,adaptive,18.0,0.85,Continue,0
+Anmol,adaptive,18.16,0.84,Continue,0
+Anmol,adaptive,18.32,0.86,Continue,0
+Anmol,adaptive,18.48,0.88,Continue,0
+Anmol,adaptive,18.63,0.87,Continue,0
+Anmol,adaptive,18.79,0.85,Continue,0
+Anmol,adaptive,18.95,0.85,Continue,0
+Anmol,adaptive,19.1,0.84,Continue,0
+Anmol,adaptive,19.26,0.81,Continue,0
+Anmol,adaptive,19.41,0.82,Continue,0
+Anmol,adaptive,19.57,0.89,Continue,0
+Anmol,adaptive,19.73,0.85,Continue,0
+Anmol,adaptive,19.88,0.89,Continue,0
+Anmol,adaptive,20.04,0.83,Continue,0
+Anmol,adaptive,20.19,0.83,Continue,0
+Anmol,adaptive,20.35,0.91,Continue,0
+Anmol,adaptive,20.5,0.86,Continue,0
+Anmol,adaptive,20.67,0.89,Continue,0
+Anmol,adaptive,20.83,0.86,Continue,0
+Anmol,adaptive,20.98,0.83,Continue,0
+Anmol,adaptive,21.14,0.88,Continue,0
+Anmol,adaptive,21.31,0.8,Continue,0
+Anmol,adaptive,21.46,0.88,Continue,0
+Anmol,adaptive,21.62,0.89,Continue,0
+Anmol,adaptive,21.79,0.87,Continue,0
+Anmol,adaptive,21.94,0.88,Continue,0
+Anmol,adaptive,22.1,0.85,Continue,0
+Anmol,adaptive,22.25,0.9,Continue,0
+Anmol,adaptive,22.41,0.86,Continue,0
+Anmol,adaptive,22.56,0.82,Continue,0
+Anmol,adaptive,22.73,0.86,Continue,0
+Anmol,adaptive,22.9,0.88,Continue,0
+Anmol,adaptive,23.05,0.88,Continue,0
+Anmol,adaptive,23.2,0.9,Continue,0
+Anmol,adaptive,23.36,0.87,Continue,0
+Anmol,adaptive,23.51,0.87,Continue,0
+Anmol,adaptive,23.67,0.9,Continue,0
+Anmol,adaptive,23.83,0.91,Continue,0
+Anmol,adaptive,23.98,0.93,Continue,0
+Anmol,adaptive,24.14,0.9,Continue,0
+Anmol,adaptive,24.3,0.89,Continue,0
+Anmol,adaptive,24.45,0.89,Continue,0
+Anmol,adaptive,24.61,0.86,Continue,0
+Anmol,adaptive,24.77,0.93,Continue,0
+Anmol,adaptive,24.93,0.91,Continue,0
+Anmol,adaptive,25.09,0.88,Continue,0
+Anmol,adaptive,25.24,0.93,Continue,0
+Anmol,adaptive,25.42,0.92,Continue,0
+Anmol,adaptive,25.59,0.85,Continue,0
+Anmol,adaptive,25.76,0.87,Continue,0
+Anmol,adaptive,25.92,0.88,Continue,0
+Anmol,adaptive,26.08,0.87,Continue,0
+Anmol,adaptive,26.23,0.87,Continue,0
+Anmol,adaptive,26.4,0.92,Continue,0
+Anmol,adaptive,26.55,0.9,Continue,0
+Anmol,adaptive,26.71,0.9,Continue,0
+Anmol,adaptive,26.87,0.87,Continue,0
+Anmol,adaptive,27.03,0.9,Continue,0
+Anmol,adaptive,27.18,0.9,Continue,0
+Anmol,adaptive,27.34,0.9,Continue,0
+Anmol,adaptive,27.5,0.86,Continue,0
+Anmol,adaptive,27.65,0.9,Continue,0
+Anmol,adaptive,27.81,0.89,Continue,0
+Anmol,adaptive,27.97,0.88,Continue,0
+Anmol,adaptive,28.14,0.86,Continue,0
+Anmol,adaptive,28.28,0.88,Continue,0
+Anmol,adaptive,28.45,0.85,Continue,0
+Anmol,adaptive,28.6,0.88,Continue,0
+Anmol,adaptive,28.75,0.89,Continue,0
+Anmol,adaptive,28.92,0.89,Continue,0
+Anmol,adaptive,29.08,0.87,Continue,0
+Anmol,adaptive,29.58,0.8,Continue,0
+Anmol,adaptive,29.73,0.87,Continue,0
+Anmol,adaptive,29.88,0.87,Continue,0
+Anmol,adaptive,30.04,0.84,Continue,0
+Anmol,adaptive,30.2,0.83,Continue,0
+Anmol,adaptive,30.37,0.86,Continue,0
+Anmol,adaptive,30.54,0.84,Continue,0
+Anmol,adaptive,30.69,0.75,Continue,0
+Anmol,adaptive,30.86,0.82,Continue,0
+Anmol,adaptive,31.03,0.7699999999999999,Continue,0
+Anmol,adaptive,31.17,0.67,Continue,0
+Anmol,adaptive,31.34,0.69,Continue,0
+Anmol,adaptive,31.5,0.63,Slow Down,0
+Anmol,adaptive,31.65,0.65,Continue,0
+Anmol,adaptive,31.81,0.73,Continue,0
+Anmol,adaptive,31.98,0.6799999999999999,Continue,0
+Anmol,adaptive,32.13,0.58,Slow Down,0
+Anmol,adaptive,32.29,0.78,Continue,0
+Anmol,adaptive,32.45,0.75,Continue,0
+Anmol,adaptive,32.61,0.6,Slow Down,0
+Anmol,adaptive,32.77,0.63,Continue,0
+Anmol,adaptive,32.93,0.72,Continue,0
+Anmol,adaptive,33.09,0.59,Slow Down,0
+Anmol,adaptive,33.25,0.75,Continue,0
+Anmol,adaptive,33.42,0.67,Continue,0
+Anmol,adaptive,33.58,0.7,Continue,0
+Anmol,adaptive,33.74,0.74,Continue,0
+Anmol,adaptive,33.9,0.75,Continue,0
+Anmol,adaptive,34.05,0.73,Continue,0
+Anmol,adaptive,34.22,0.77,Continue,0
+Anmol,adaptive,34.37,0.57,Slow Down,0
+Anmol,adaptive,34.52,0.64,Continue,0
+Anmol,adaptive,34.69,0.63,Slow Down,0
+Anmol,adaptive,34.85,0.57,Slow Down,0
+Anmol,adaptive,35.02,0.61,Slow Down,0
+Anmol,adaptive,35.18,0.7,Continue,0
+Anmol,adaptive,35.35,0.7,Continue,0
+Anmol,adaptive,35.51,0.68,Continue,0
+Anmol,adaptive,35.66,0.71,Continue,0
+Anmol,adaptive,35.82,0.66,Continue,0
+Anmol,adaptive,35.98,0.8,Continue,0
+Anmol,adaptive,36.14,0.72,Continue,0
+Anmol,adaptive,36.32,0.65,Slow Down,0
+Anmol,adaptive,36.48,0.69,Continue,0
+Anmol,adaptive,36.65,0.68,Continue,0
+Anmol,adaptive,36.8,0.72,Continue,0
+Anmol,adaptive,36.97,0.79,Continue,0
+Anmol,adaptive,37.12,0.79,Continue,0
+Anmol,adaptive,37.28,0.81,Continue,0
+Anmol,adaptive,37.44,0.8,Continue,0
+Anmol,adaptive,37.6,0.78,Continue,0
+Anmol,adaptive,37.75,0.84,Continue,0
+Anmol,adaptive,37.91,0.84,Continue,0
+Anmol,adaptive,38.07,0.86,Continue,0
+Anmol,adaptive,38.23,0.86,Continue,0
+Anmol,adaptive,38.38,0.83,Continue,0
+Anmol,adaptive,38.54,0.81,Continue,0
+Anmol,adaptive,38.71,0.84,Continue,0
+Anmol,adaptive,38.86,0.76,Continue,0
+Anmol,adaptive,39.02,0.8,Continue,0
+Anmol,adaptive,39.19,0.86,Continue,0
+Anmol,adaptive,39.34,0.78,Continue,0
+Anmol,adaptive,39.5,0.82,Continue,0
+Anmol,adaptive,39.66,0.81,Continue,0
+Anmol,adaptive,39.83,0.81,Continue,0
+Anmol,adaptive,39.99,0.74,Continue,0
+Anmol,adaptive,40.15,0.78,Continue,0
+Anmol,adaptive,40.3,0.81,Continue,0
+Anmol,adaptive,40.46,0.82,Continue,0
+Anmol,adaptive,40.62,0.9,Continue,0
+Anmol,adaptive,40.77,0.87,Continue,0
+Anmol,adaptive,40.93,0.87,Continue,0
+Anmol,adaptive,41.08,0.86,Continue,0
+Anmol,adaptive,41.24,0.85,Continue,0
+Anmol,adaptive,41.42,0.84,Continue,0
+Anmol,adaptive,41.58,0.87,Continue,0
+Anmol,adaptive,41.74,0.88,Continue,0
+Anmol,adaptive,41.89,0.86,Continue,0
+Anmol,adaptive,42.04,0.88,Continue,0
+Anmol,adaptive,42.21,0.8,Continue,0
+Anmol,adaptive,42.38,0.82,Continue,0
+Anmol,adaptive,42.55,0.83,Continue,0
+Anmol,adaptive,42.71,0.83,Continue,0
+Anmol,adaptive,42.87,0.79,Continue,0
+Anmol,adaptive,43.03,0.87,Continue,0
+Anmol,adaptive,43.18,0.84,Continue,0
+Anmol,adaptive,43.34,0.84,Continue,0
+Anmol,adaptive,43.49,0.82,Continue,0
+Anmol,adaptive,43.65,0.86,Continue,0
+Anmol,adaptive,43.81,0.83,Continue,0
+Anmol,adaptive,43.97,0.83,Continue,0
+Anmol,adaptive,44.12,0.9,Continue,0
+Anmol,adaptive,44.28,0.88,Continue,0
+Anmol,adaptive,44.44,0.87,Continue,0
+Anmol,adaptive,44.59,0.85,Continue,0
+Anmol,adaptive,45.07,0.8,Continue,0
+Anmol,adaptive,45.24,0.85,Continue,0
+Anmol,adaptive,45.4,0.85,Continue,0
+Anmol,adaptive,45.56,0.85,Continue,0
+Anmol,adaptive,45.72,0.85,Continue,0
+Anmol,adaptive,45.88,0.85,Continue,0
+Anmol,adaptive,46.03,0.82,Continue,0
+Anmol,adaptive,46.19,0.83,Continue,0
+Anmol,adaptive,46.35,0.84,Continue,0
+Anmol,adaptive,46.5,0.85,Continue,0
+Anmol,adaptive,46.67,0.84,Continue,0
+Anmol,adaptive,46.83,0.84,Continue,0
+Anmol,adaptive,46.99,0.87,Continue,0
+Anmol,adaptive,47.15,0.86,Continue,0
+Anmol,adaptive,47.31,0.84,Continue,0
+Anmol,adaptive,47.47,0.85,Continue,0
+Anmol,adaptive,47.63,0.85,Continue,0
+Anmol,adaptive,47.79,0.87,Continue,0
+Anmol,adaptive,47.93,0.87,Continue,0
+Anmol,adaptive,48.1,0.83,Continue,0
+Anmol,adaptive,48.25,0.81,Continue,0
+Anmol,adaptive,48.41,0.82,Continue,0
+Anmol,adaptive,48.56,0.85,Continue,0
+Anmol,adaptive,48.71,0.83,Continue,0
+Anmol,adaptive,48.87,0.88,Continue,0
+Anmol,adaptive,49.04,0.84,Continue,0
+Anmol,adaptive,49.18,0.89,Continue,0
+Anmol,adaptive,49.33,0.83,Continue,0
+Anmol,adaptive,49.49,0.88,Continue,0
+Anmol,adaptive,49.65,0.87,Continue,0
+Anmol,adaptive,49.81,0.86,Continue,0
+Anmol,adaptive,49.97,0.86,Continue,0
+Anmol,adaptive,50.13,0.85,Continue,0
+Anmol,adaptive,50.29,0.87,Continue,0
+Anmol,adaptive,50.46,0.84,Continue,0
+Anmol,adaptive,50.62,0.82,Continue,0
+Anmol,adaptive,50.78,0.86,Continue,0
+Anmol,adaptive,50.94,0.85,Continue,0
+Anmol,adaptive,51.1,0.84,Continue,0
+Anmol,adaptive,51.26,0.87,Continue,0
+Anmol,adaptive,51.41,0.83,Continue,0
+Anmol,adaptive,51.57,0.86,Continue,0
+Anmol,adaptive,51.73,0.86,Continue,0
+Anmol,adaptive,51.88,0.85,Continue,0
+Anmol,adaptive,52.04,0.94,Continue,0
+Anmol,adaptive,52.21,0.86,Continue,0
+Anmol,adaptive,52.36,0.86,Continue,0
+Anmol,adaptive,52.52,0.9,Continue,0
+Anmol,adaptive,52.67,0.9,Continue,0
+Anmol,adaptive,52.83,0.86,Continue,0
+Anmol,adaptive,52.99,0.83,Continue,0
+Anmol,adaptive,53.14,0.85,Continue,0
+Anmol,adaptive,53.29,0.87,Continue,0
+Anmol,adaptive,53.45,0.86,Continue,0
+Anmol,adaptive,53.62,0.86,Continue,0
+Anmol,adaptive,53.78,0.88,Continue,0
+Anmol,adaptive,53.94,0.88,Continue,0
+Anmol,adaptive,54.1,0.9,Continue,0
+Anmol,adaptive,54.26,0.92,Continue,0
+Anmol,adaptive,54.41,0.88,Continue,0
+Anmol,adaptive,54.57,0.86,Continue,0
+Anmol,adaptive,54.73,0.9,Continue,0
+Anmol,adaptive,54.89,0.83,Continue,0
+Anmol,adaptive,55.06,0.86,Continue,0
+Anmol,adaptive,55.22,0.85,Continue,0
+Anmol,adaptive,55.39,0.88,Continue,0
+Anmol,adaptive,55.54,0.88,Continue,0
+Anmol,adaptive,55.69,0.89,Continue,0
+Anmol,adaptive,55.87,0.85,Continue,0
+Anmol,adaptive,56.04,0.91,Continue,0
+Anmol,adaptive,56.19,0.86,Continue,0
+Anmol,adaptive,56.35,0.89,Continue,0
+Anmol,adaptive,56.5,0.9,Continue,0
+Anmol,adaptive,56.66,0.89,Continue,0
+Anmol,adaptive,56.82,0.9,Continue,0
+Anmol,adaptive,56.97,0.87,Continue,0
+Anmol,adaptive,57.13,0.89,Continue,0
+Anmol,adaptive,57.29,0.91,Continue,0
+Anmol,adaptive,57.46,0.93,Continue,0
+Anmol,adaptive,57.63,0.87,Continue,0
+Anmol,adaptive,57.79,0.89,Continue,0
+Anmol,adaptive,57.93,0.87,Continue,0
+Anmol,adaptive,58.09,0.9,Continue,0
+Anmol,adaptive,58.25,0.89,Continue,0
+Anmol,adaptive,58.41,0.87,Continue,0
+Anmol,adaptive,58.89,0.84,Continue,0
+Anmol,adaptive,59.06,0.84,Continue,0
+Anmol,adaptive,59.22,0.76,Continue,0
+Anmol,adaptive,59.38,0.84,Continue,0
+Anmol,adaptive,59.55,0.81,Continue,0
+Anmol,adaptive,59.69,0.88,Continue,0
+Anmol,adaptive,59.86,0.83,Continue,0
+Anmol,adaptive,60.0,0.79,Continue,0
+Anmol,adaptive,60.17,0.74,Continue,0
+Anmol,adaptive,60.32,0.62,Slow Down,0
+Anmol,adaptive,60.48,0.57,Slow Down,0
+Anmol,adaptive,60.62,0.47,Slow Down,0
+Anmol,adaptive,60.79,0.31999999999999995,Slow Down,1
+Anmol,adaptive,60.95,0.16999999999999996,Add Break,2
+Anmol,adaptive,61.11,0.019999999999999962,Add Break,3
+Anmol,adaptive,61.25,0.0,Add Break,4
+Anmol,adaptive,61.4,0.0,Add Break,5
+Anmol,adaptive,61.55,0.0,Add Break,6
+Anmol,adaptive,61.7,0.0,Add Break,7
+Anmol,adaptive,61.86,0.0,Add Break,8
+Anmol,adaptive,62.02,0.0,Add Break,9
+Anmol,adaptive,62.17,0.0,Add Break,10
+Anmol,adaptive,62.32,0.0,Add Break,11
+Anmol,adaptive,62.46,0.0,Add Break,12
+Anmol,adaptive,62.6,0.0,Add Break,13
+Anmol,adaptive,62.77,0.0,Add Break,14
+Anmol,adaptive,62.92,0.0,Add Break,15
+Anmol,adaptive,63.08,0.0,Add Break,16
+Anmol,adaptive,63.24,0.67,Slow Down,15
+Anmol,adaptive,63.4,0.63,Slow Down,14
+Anmol,adaptive,63.56,0.58,Add Break,13
+Anmol,adaptive,63.71,0.71,Slow Down,12
+Anmol,adaptive,63.87,0.72,Slow Down,11
+Anmol,adaptive,64.03,0.72,Slow Down,10
+Anmol,adaptive,64.19,0.82,Continue,9
+Anmol,adaptive,64.34,0.68,Slow Down,8
+Anmol,adaptive,64.5,0.87,Continue,7
+Anmol,adaptive,64.67,0.87,Continue,6
+Anmol,adaptive,64.84,0.84,Continue,5
+Anmol,adaptive,65.01,0.88,Continue,4
+Anmol,adaptive,65.16,0.86,Continue,3
+Anmol,adaptive,65.32,0.85,Continue,2
+Anmol,adaptive,65.48,0.85,Continue,1
+Anmol,adaptive,65.64,0.82,Continue,0
+Anmol,adaptive,65.8,0.86,Continue,0
+Anmol,adaptive,65.95,0.88,Continue,0
+Anmol,adaptive,66.11,0.91,Continue,0
+Anmol,adaptive,66.27,0.88,Continue,0
+Anmol,adaptive,66.42,0.82,Continue,0
+Anmol,adaptive,66.58,0.85,Continue,0
+Anmol,adaptive,66.73,0.85,Continue,0
+Anmol,adaptive,66.9,0.8,Continue,0
+Anmol,adaptive,67.05,0.75,Continue,0
+Anmol,adaptive,67.21,0.73,Continue,0
+Anmol,adaptive,67.38,0.6799999999999999,Continue,0
+Anmol,adaptive,67.53,0.58,Slow Down,0
+Anmol,adaptive,67.68,0.42999999999999994,Slow Down,1
+Anmol,adaptive,67.84,0.2799999999999999,Add Break,2
+Anmol,adaptive,68.0,0.12999999999999992,Add Break,3
+Anmol,adaptive,68.15,0.57,Slow Down,2
+Anmol,adaptive,68.32,0.62,Slow Down,1
+Anmol,adaptive,68.49,0.64,Continue,0
+Anmol,adaptive,68.66,0.82,Continue,0
+Anmol,adaptive,68.82,0.73,Continue,0
+Anmol,adaptive,68.97,0.67,Continue,0
+Anmol,adaptive,69.14,0.77,Continue,0
+Anmol,adaptive,69.29,0.79,Continue,0
+Anmol,adaptive,69.45,0.75,Continue,0
+Anmol,adaptive,69.62,0.78,Continue,0
+Anmol,adaptive,69.77,0.75,Continue,0
+Anmol,adaptive,69.92,0.81,Continue,0
+Anmol,adaptive,70.08,0.77,Continue,0
+Anmol,adaptive,70.24,0.69,Continue,0
+Anmol,adaptive,70.41,0.83,Continue,0
+Anmol,adaptive,70.56,0.79,Continue,0
+Anmol,adaptive,70.72,0.8,Continue,0
+Anmol,adaptive,70.88,0.79,Continue,0
+Anmol,adaptive,71.05,0.76,Continue,0
+Anmol,adaptive,71.22,0.74,Continue,0
+Anmol,adaptive,71.39,0.81,Continue,0
+Anmol,adaptive,71.56,0.83,Continue,0
+Anmol,adaptive,71.71,0.85,Continue,0
+Anmol,adaptive,71.87,0.79,Continue,0
+Anmol,adaptive,72.02,0.87,Continue,0
+Anmol,adaptive,72.18,0.78,Continue,0
+Anmol,adaptive,72.33,0.88,Continue,0
+Anmol,adaptive,72.49,0.82,Continue,0
+Anmol,adaptive,72.64,0.79,Continue,0
+Anmol,adaptive,72.81,0.74,Continue,0
+Anmol,adaptive,72.96,0.89,Continue,0
+Anmol,adaptive,73.12,0.86,Continue,0
+Anmol,adaptive,73.26,0.9,Continue,0
+Anmol,adaptive,73.43,0.88,Continue,0
+Anmol,adaptive,73.59,0.87,Continue,0
+Anmol,adaptive,73.73,0.86,Continue,0
+Anmol,adaptive,73.9,0.86,Continue,0
+Anmol,adaptive,74.07,0.85,Continue,0
+Anmol,adaptive,74.23,0.85,Continue,0
+Anmol,adaptive,74.39,0.89,Continue,0
+Anmol,adaptive,74.55,0.79,Continue,0
+Anmol,adaptive,74.7,0.84,Continue,0
+Anmol,adaptive,74.85,0.82,Continue,0
+Anmol,adaptive,75.0,0.83,Continue,0
+Anmol,adaptive,75.17,0.85,Continue,0
+Anmol,adaptive,75.32,0.83,Continue,0
+Anmol,adaptive,75.48,0.78,Continue,0
+Anmol,adaptive,75.64,0.85,Continue,0
+Anmol,adaptive,75.8,0.88,Continue,0
+Anmol,adaptive,75.95,0.84,Continue,0
+Anmol,adaptive,76.46,0.89,Continue,0
+Anmol,adaptive,76.62,0.87,Continue,0
+Anmol,adaptive,76.78,0.9,Continue,0
+Anmol,adaptive,76.94,0.89,Continue,0
+Anmol,adaptive,77.1,0.88,Continue,0
+Anmol,adaptive,77.26,0.92,Continue,0
+Anmol,adaptive,77.42,0.9,Continue,0
+Anmol,adaptive,77.57,0.89,Continue,0
+Anmol,adaptive,77.73,0.86,Continue,0
+Anmol,adaptive,77.89,0.87,Continue,0
+Anmol,adaptive,78.03,0.84,Continue,0
+Anmol,adaptive,78.2,0.88,Continue,0
+Anmol,adaptive,78.35,0.89,Continue,0
+Anmol,adaptive,78.51,0.86,Continue,0
+Anmol,adaptive,78.67,0.89,Continue,0
+Anmol,adaptive,78.84,0.91,Continue,0
+Anmol,adaptive,78.99,0.91,Continue,0
+Anmol,adaptive,79.15,0.87,Continue,0
+Anmol,adaptive,79.32,0.91,Continue,0
+Anmol,adaptive,79.48,0.88,Continue,0
+Anmol,adaptive,79.64,0.88,Continue,0
+Anmol,adaptive,79.8,0.87,Continue,0
+Anmol,adaptive,79.96,0.89,Continue,0
+Anmol,adaptive,80.11,0.89,Continue,0
+Anmol,adaptive,80.27,0.89,Continue,0
+Anmol,adaptive,80.44,0.9,Continue,0
+Anmol,adaptive,80.6,0.86,Continue,0
+Anmol,adaptive,80.76,0.89,Continue,0
+Anmol,adaptive,80.91,0.86,Continue,0
+Anmol,adaptive,81.09,0.87,Continue,0
+Anmol,adaptive,81.25,0.88,Continue,0
+Anmol,adaptive,81.41,0.89,Continue,0
+Anmol,adaptive,81.56,0.91,Continue,0
+Anmol,adaptive,81.72,0.89,Continue,0
+Anmol,adaptive,81.88,0.9,Continue,0
+Anmol,adaptive,82.04,0.88,Continue,0
+Anmol,adaptive,82.21,0.9,Continue,0
+Anmol,adaptive,82.36,0.9,Continue,0
+Anmol,adaptive,82.52,0.88,Continue,0
+Anmol,adaptive,82.68,0.86,Continue,0
+Anmol,adaptive,82.84,0.83,Continue,0
+Anmol,adaptive,83.0,0.88,Continue,0
+Anmol,adaptive,83.16,0.87,Continue,0
+Anmol,adaptive,83.31,0.86,Continue,0
+Anmol,adaptive,83.46,0.89,Continue,0
+Anmol,adaptive,83.62,0.87,Continue,0
+Anmol,adaptive,83.78,0.89,Continue,0
+Anmol,adaptive,83.94,0.92,Continue,0
+Anmol,adaptive,84.11,0.89,Continue,0
+Anmol,adaptive,84.26,0.89,Continue,0
+Anmol,adaptive,84.42,0.88,Continue,0
+Anmol,adaptive,84.57,0.93,Continue,0
+Anmol,adaptive,84.73,0.89,Continue,0
+Anmol,adaptive,84.89,0.87,Continue,0
+Anmol,adaptive,85.05,0.75,Continue,0
+Anmol,adaptive,85.21,0.84,Continue,0
+Anmol,adaptive,85.39,0.91,Continue,0
+Anmol,adaptive,85.56,0.85,Continue,0
+Anmol,adaptive,85.73,0.92,Continue,0
+Anmol,adaptive,85.89,0.91,Continue,0
+Anmol,adaptive,86.04,0.86,Continue,0
+Anmol,adaptive,86.21,0.94,Continue,0
+Anmol,adaptive,86.37,0.86,Continue,0
+Anmol,adaptive,86.52,0.89,Continue,0
+Anmol,adaptive,86.68,0.79,Continue,0
+Anmol,adaptive,86.84,0.86,Continue,0
+Anmol,adaptive,86.99,0.81,Continue,0
+Anmol,adaptive,87.19,0.8,Continue,0
+Anmol,adaptive,87.35,0.89,Continue,0
+Anmol,adaptive,87.51,0.95,Continue,0
+Anmol,adaptive,87.67,0.88,Continue,0
+Anmol,adaptive,87.83,0.73,Continue,0
+Anmol,adaptive,87.98,0.72,Continue,0
+Anmol,adaptive,88.14,0.7,Continue,0
+Anmol,adaptive,88.3,0.75,Continue,0
+Anmol,adaptive,88.47,0.86,Continue,0
+Anmol,adaptive,88.63,0.8,Continue,0
+Anmol,adaptive,88.78,0.81,Continue,0
+Anmol,adaptive,88.95,0.81,Continue,0
+Anmol,adaptive,89.11,0.81,Continue,0
+Anmol,adaptive,89.31,0.88,Continue,0
+Anmol,adaptive,89.47,0.87,Continue,0
+Anmol,adaptive,89.62,0.81,Continue,0
+Anmol,adaptive,89.78,0.85,Continue,0
+Anmol,adaptive,89.94,0.85,Continue,0
+Anmol,adaptive,90.1,0.87,Continue,0
+Anmol,adaptive,90.26,0.84,Continue,0
+Anmol,adaptive,90.41,0.89,Continue,0
+Anmol,adaptive,90.57,0.81,Continue,0
+Anmol,adaptive,91.06,0.85,Continue,0
+Anmol,adaptive,91.23,0.87,Continue,0
+Anmol,adaptive,91.38,0.85,Continue,0
+Anmol,adaptive,91.55,0.88,Continue,0
+Anmol,adaptive,91.71,0.75,Continue,0
+Anmol,adaptive,91.88,0.72,Continue,0
+Anmol,adaptive,92.05,0.6699999999999999,Continue,0
+Anmol,adaptive,92.2,0.76,Continue,0
+Anmol,adaptive,92.36,0.71,Continue,0
+Anmol,adaptive,92.5,0.67,Continue,0
+Anmol,adaptive,92.67,0.62,Slow Down,0
+Anmol,adaptive,92.82,0.62,Slow Down,0
+Anmol,adaptive,92.99,0.64,Continue,0
+Anmol,adaptive,93.15,0.64,Continue,0
+Anmol,adaptive,93.31,0.61,Slow Down,0
+Anmol,adaptive,93.48,0.63,Continue,0
+Anmol,adaptive,93.64,0.72,Continue,0
+Anmol,adaptive,93.79,0.79,Continue,0
+Anmol,adaptive,93.95,0.74,Continue,0
+Anmol,adaptive,94.12,0.68,Continue,0
+Anmol,adaptive,94.28,0.71,Continue,0
+Anmol,adaptive,94.45,0.74,Continue,0
+Anmol,adaptive,94.61,0.84,Continue,0
+Anmol,adaptive,94.78,0.49,Slow Down,0
+Anmol,adaptive,94.94,0.66,Continue,0
+Anmol,adaptive,95.11,0.82,Continue,0
+Anmol,adaptive,95.28,0.71,Continue,0
+Anmol,adaptive,95.45,0.86,Continue,0
+Anmol,adaptive,95.6,0.78,Continue,0
+Anmol,adaptive,95.76,0.78,Continue,0
+Anmol,adaptive,95.91,0.77,Continue,0
+Anmol,adaptive,96.07,0.85,Continue,0
+Anmol,adaptive,96.23,0.84,Continue,0
+Anmol,adaptive,96.37,0.8,Continue,0
+Anmol,adaptive,96.54,0.84,Continue,0
+Anmol,adaptive,96.71,0.83,Continue,0
+Anmol,adaptive,96.88,0.85,Continue,0
+Anmol,adaptive,97.05,0.76,Continue,0
+Anmol,adaptive,97.2,0.72,Continue,0
+Anmol,adaptive,97.36,0.69,Continue,0
+Anmol,adaptive,97.52,0.77,Continue,0
+Anmol,adaptive,97.67,0.62,Slow Down,0
+Anmol,adaptive,97.82,0.61,Slow Down,0
+Anmol,adaptive,97.98,0.91,Continue,0
+Anmol,adaptive,98.14,0.83,Continue,0
+Anmol,adaptive,98.31,0.7799999999999999,Continue,0
+Anmol,adaptive,98.46,0.78,Continue,0
+Anmol,adaptive,98.63,0.57,Slow Down,0
+Anmol,adaptive,98.79,0.81,Continue,0
+Anmol,adaptive,98.95,0.82,Continue,0
+Anmol,adaptive,99.1,0.78,Continue,0
+Anmol,adaptive,99.27,0.77,Continue,0
+Anmol,adaptive,99.44,0.73,Continue,0
+Anmol,adaptive,99.62,0.8,Continue,0
+Anmol,adaptive,99.8,0.66,Slow Down,0
+Anmol,adaptive,100.01,0.7,Continue,0
+Anmol,adaptive,100.22,0.73,Continue,0
+Anmol,adaptive,100.42,0.6799999999999999,Continue,0
+Anmol,adaptive,100.58,0.58,Slow Down,0
+Anmol,adaptive,100.74,0.42999999999999994,Slow Down,1
+Anmol,adaptive,100.9,0.2799999999999999,Add Break,2
+Anmol,adaptive,101.06,0.12999999999999992,Add Break,3
+Anmol,adaptive,101.23,0.0,Add Break,4
+Anmol,adaptive,101.4,0.0,Add Break,5
+Anmol,adaptive,101.57,0.0,Add Break,6
+Anmol,adaptive,101.73,0.0,Add Break,7
+Anmol,adaptive,101.9,0.0,Add Break,8
+Anmol,adaptive,102.07,0.62,Slow Down,7
+Anmol,adaptive,102.25,0.57,Slow Down,6
+Anmol,adaptive,102.42,0.63,Slow Down,5
+Anmol,adaptive,102.59,0.47,Slow Down,4
+Anmol,adaptive,102.76,0.53,Slow Down,3
+Anmol,adaptive,102.93,0.52,Slow Down,2
+Anmol,adaptive,103.1,0.5,Slow Down,1
+Anmol,adaptive,103.27,0.55,Slow Down,0
+Anmol,adaptive,103.44,0.53,Slow Down,0
+Anmol,adaptive,103.62,0.49,Slow Down,0
+Anmol,adaptive,103.79,0.49,Slow Down,0
+Anmol,adaptive,103.95,0.53,Slow Down,0
+Anmol,adaptive,104.11,0.59,Slow Down,0
+Anmol,adaptive,104.28,0.65,Continue,0
+Anmol,adaptive,104.45,0.57,Slow Down,0
+Anmol,adaptive,104.62,0.65,Continue,0
+Anmol,adaptive,104.79,0.59,Slow Down,0
+Anmol,adaptive,104.96,0.66,Continue,0
+Anmol,adaptive,105.17,0.63,Slow Down,0
+Anmol,adaptive,105.36,0.64,Continue,0
+Anmol,adaptive,105.56,0.71,Continue,0
+Anmol,adaptive,105.74,0.62,Slow Down,0
+Anmol,adaptive,105.91,0.57,Slow Down,0
+Anmol,adaptive,106.08,0.52,Slow Down,0
+Anmol,adaptive,106.25,0.47000000000000003,Slow Down,0
+Anmol,adaptive,106.42,0.77,Continue,0
+Anmol,adaptive,106.59,0.83,Continue,0
+Anmol,adaptive,106.77,0.86,Continue,0
+Anmol,adaptive,106.94,0.83,Continue,0
+Anmol,adaptive,107.11,0.82,Continue,0
+Anmol,adaptive,107.26,0.81,Continue,0
+Anmol,adaptive,107.44,0.85,Continue,0
+Anmol,adaptive,107.61,0.78,Continue,0
+Anmol,adaptive,107.78,0.84,Continue,0
+Anmol,adaptive,108.33,0.8,Continue,0
+Anmol,adaptive,108.5,0.83,Continue,0
+Anmol,adaptive,108.67,0.78,Continue,0
+Anmol,adaptive,108.85,0.84,Continue,0
+Anmol,adaptive,109.01,0.77,Continue,0
+Anmol,adaptive,109.18,0.84,Continue,0
+Anmol,adaptive,109.37,0.83,Continue,0
+Anmol,adaptive,109.53,0.85,Continue,0
+Anmol,adaptive,109.71,0.87,Continue,0
+Anmol,adaptive,109.87,0.83,Continue,0
+Anmol,adaptive,110.04,0.88,Continue,0
+Anmol,adaptive,110.21,0.81,Continue,0
+Anmol,adaptive,110.38,0.81,Continue,0
+Anmol,adaptive,110.57,0.81,Continue,0
+Anmol,adaptive,110.76,0.76,Continue,0
+Anmol,adaptive,110.96,0.81,Continue,0
+Anmol,adaptive,111.14,0.87,Continue,0
+Anmol,adaptive,111.3,0.85,Continue,0
+Anmol,adaptive,111.47,0.87,Continue,0
+Anmol,adaptive,111.63,0.87,Continue,0
+Anmol,adaptive,111.81,0.86,Continue,0
+Anmol,adaptive,111.97,0.86,Continue,0
+Anmol,adaptive,112.14,0.84,Continue,0
+Anmol,adaptive,112.32,0.85,Continue,0
+Anmol,adaptive,112.49,0.83,Continue,0
+Anmol,adaptive,112.66,0.8,Continue,0
+Anmol,adaptive,112.83,0.83,Continue,0
+Anmol,adaptive,112.99,0.85,Continue,0
+Anmol,adaptive,113.15,0.83,Continue,0
+Anmol,adaptive,113.32,0.9,Continue,0
+Anmol,adaptive,113.5,0.81,Continue,0
+Anmol,adaptive,113.67,0.86,Continue,0
+Anmol,adaptive,113.84,0.84,Continue,0
+Anmol,adaptive,114.0,0.85,Continue,0
+Anmol,adaptive,114.16,0.83,Continue,0
+Anmol,adaptive,114.32,0.8,Continue,0
+Anmol,adaptive,114.49,0.83,Continue,0
+Anmol,adaptive,114.65,0.88,Continue,0
+Anmol,adaptive,114.83,0.85,Continue,0
+Anmol,adaptive,114.99,0.83,Continue,0
+Anmol,adaptive,115.16,0.84,Continue,0
+Anmol,adaptive,115.33,0.88,Continue,0
+Anmol,adaptive,115.5,0.84,Continue,0
+Anmol,adaptive,115.66,0.84,Continue,0
+Anmol,adaptive,115.84,0.81,Continue,0
+Anmol,adaptive,116.01,0.89,Continue,0
+Anmol,adaptive,116.22,0.8,Continue,0
+Anmol,adaptive,116.42,0.88,Continue,0
+Anmol,adaptive,116.61,0.87,Continue,0
+Anmol,adaptive,116.8,0.86,Continue,0
+Anmol,adaptive,116.99,0.84,Continue,0
+Anmol,adaptive,117.2,0.84,Continue,0
+Anmol,adaptive,117.4,0.85,Continue,0
+Anmol,adaptive,117.59,0.83,Continue,0
+Anmol,adaptive,117.8,0.84,Continue,0
+Anmol,adaptive,117.98,0.86,Continue,0
+Anmol,adaptive,118.16,0.85,Continue,0
+Anmol,adaptive,118.33,0.86,Continue,0
+Anmol,adaptive,118.49,0.83,Continue,0
+Anmol,adaptive,118.65,0.86,Continue,0
+Anmol,adaptive,118.86,0.85,Continue,0
+Anmol,adaptive,119.05,0.84,Continue,0
+Anmol,adaptive,119.23,0.8,Continue,0
+Anmol,adaptive,119.42,0.83,Continue,0
+Anmol,adaptive,119.59,0.81,Continue,0
+Anmol,adaptive,119.76,0.89,Continue,0
+Anmol,adaptive,119.93,0.87,Continue,0

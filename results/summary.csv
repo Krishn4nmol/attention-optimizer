@@ -1,0 +1,6 @@
+Metric,Adaptive,Baseline,Improvement
+Avg Attention %,79.11,78.46,0.6500000000000057
+Time Focused %,90.87,89.07,1.8000000000000114
+Time Distracted %,3.4,4.43,1.0299999999999998
+Attention Drops,7.0,5.0,-2.0
+Std Dev %,16.23,18.32,2.09
