@@ -233,6 +233,6 @@ Krishn4nmol
 
 ---
 
-## 📄 Lice
+## 📄 Lic
 
 MIT License - free to use for research and education.
