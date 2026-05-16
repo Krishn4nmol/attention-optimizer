@@ -233,6 +233,6 @@ Krishn4nmol
 
 ---
 
-## 📄 License
+## 📄 Licens
 
 MIT License - free to use for research and education.
